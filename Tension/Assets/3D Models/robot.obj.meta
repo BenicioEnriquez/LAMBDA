@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: a519293aa8704814dbdf3731e58475f9
+guid: ecff5fe5a07b2244e83a6e7003eedaaa
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Dark_Mat
-    second: {fileID: 2100000, guid: ab52ecd7c63526f40b8607b444568494, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Eyes_Mat
-    second: {fileID: 2100000, guid: 65c84c7a2b0e4cd4798832dc2a678e95, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
