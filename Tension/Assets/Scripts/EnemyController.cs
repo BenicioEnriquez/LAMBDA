@@ -13,10 +13,24 @@ public class EnemyController : MonoBehaviour
     {
         rig = GetComponent<Rigidbody>();
     }
+
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(target.transform.position);
-        rig.AddRelativeForce(Vector3.forward * speed);
+        try
+        {
+            transform.LookAt(target.transform.position);
+            rig.AddRelativeForce(Vector3.forward * speed);
+        }
+        catch { }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Robot")
+        {
+            collision.gameObject.GetComponent<RobotController>().health -= 10;
+            rig.AddForce(-((collision.transform.position - transform.position).normalized * 1000));
+        }
     }
 }

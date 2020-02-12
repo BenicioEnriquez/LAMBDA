@@ -15,6 +15,10 @@ public class CivilianController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rig.AddForce(Random.insideUnitSphere* 10);
+        if (Time.frameCount % 300 == 0)
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(0, 360 * Random.value));
+            rig.AddRelativeForce(Vector3.forward * Random.value * 1000);
+        }
     }
 }
