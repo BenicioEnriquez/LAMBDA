@@ -169,17 +169,23 @@ public class RobotController : MonoBehaviour
             doJump = 3;
 
         // get player input
-        inputX = 0;
-        inputY = 0;
 
-        if (Input.GetKey(forwardKey))
+        if (Input.GetKey(forwardKey) && inputY <= 0.9)
         {
-            inputY += 1;
+            inputY += 0.05f;
+        }
+        else if(inputY > 0)
+        {
+            inputY -= 0.05f;
         }
 
-        if (Input.GetKey(backKey))
+        if (Input.GetKey(backKey) && inputY >= -0.5f)
         {
-            inputY -= 1;
+            inputY -= 0.05f;
+        }
+        else if (inputY < 0)
+        {
+            inputY += 0.05f;
         }
 
         if (Input.GetKey(rightKey))
@@ -346,70 +352,7 @@ public class RobotController : MonoBehaviour
             doJump = 1;
         }
 
-        if (doJump == 1)
-        {
-            if (lastAnim != "Jump")
-            {
-                anim.SetTrigger("Jump");
-                lastAnim = "Jump";
-            }
-        }
-        else if (inputY > 0 && inputX == 0)
-        {
-            if (lastAnim != "Run")
-            {
-                anim.SetTrigger("Run");
-                lastAnim = "Run";
-            }
-        }
-        else if (inputY > 0 && inputX > 0)
-        {
-            if (lastAnim != "Run Right")
-            {
-                anim.SetTrigger("Run Right");
-                lastAnim = "Run Right";
-            }
-        }
-        else if (inputY > 0 && inputX < 0)
-        {
-            if (lastAnim != "Run Left")
-            {
-                anim.SetTrigger("Run Left");
-                lastAnim = "Run Left";
-            }
-        }
-        else if (inputX > 0)
-        {
-            if (lastAnim != "Right")
-            {
-                anim.SetTrigger("Right");
-                lastAnim = "Right";
-            }
-        }
-        else if (inputX < 0)
-        {
-            if (lastAnim != "Left")
-            {
-                anim.SetTrigger("Left");
-                lastAnim = "Left";
-            }
-        }
-        else if (inputY < 0)
-        {
-            if (lastAnim != "Back")
-            {
-                anim.SetTrigger("Back");
-                lastAnim = "Back";
-            }
-        }
-        else
-        {
-            if (lastAnim != "Stop")
-            {
-                anim.SetTrigger("Stop");
-                lastAnim = "Stop";
-            }
-        }
+        anim.SetFloat("Forward", inputY);
         
         if (Input.GetMouseButtonDown(0))
         {
