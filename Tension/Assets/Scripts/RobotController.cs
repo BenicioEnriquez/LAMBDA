@@ -371,21 +371,22 @@ public class RobotController : MonoBehaviour
         }
 
         anim.SetFloat("Forward", inputY);
-        
-        if (Input.GetMouseButtonDown(0))
+        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit))
         {
-            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit))
+
+            if (hit.transform.gameObject.tag == "Enemy" && hit.distance < 5)
             {
-                if (hit.transform.gameObject.name == "Enemy" && hit.distance < 5)
+                if (Input.GetMouseButtonDown(0))
                 {
-                    hit.rigidbody.AddForce((hit.transform.position - transform.position).normalized * 1000);
+                    hit.transform.gameObject.GetComponent<EnemyController>().health -= 10;
                 }
+
             }
         }
 
         if(health <= 0)
         {
-            Instantiate(deadPlayer, transform.position + Vector3.up, Quaternion.identity);
+            Instantiate(deadPlayer, transform.position + Vector3.up, transform.rotation);
             Destroy(GameObject.FindGameObjectWithTag("Canvas"));
             Destroy(gameObject);
         }
@@ -449,11 +450,18 @@ public class RobotController : MonoBehaviour
         // don't break from the list once we find it because we might somehow have duplicate entries, and we need to recheck groundedOnDynamic anyways
         for (int i = 0; i < collisions.Count; i++)
         {
-            if (collisions[i] == collision.gameObject)
-                collisions.RemoveAt(i--);
+            try
+            {
+                if (collisions[i] == collision.gameObject)
+                    collisions.RemoveAt(i--);
 
-            else if (!collisions[i].isStatic)
-                touchingDynamic = true;
+                else if (!collisions[i].isStatic)
+                    touchingDynamic = true;
+            }
+            catch
+            {
+                collisions.RemoveAt(i--);
+            }
         }
 
         contactPoints.Remove(collision.gameObject.GetInstanceID());
