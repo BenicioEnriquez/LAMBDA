@@ -170,7 +170,7 @@ public class RobotController : MonoBehaviour
 
         // get player input
 
-        if (Input.GetKey(forwardKey) && inputY <= 0.9)
+        if (Input.GetKey(forwardKey) && inputY <= 0.9f)
         {
             inputY += 0.05f;
         }
@@ -188,14 +188,32 @@ public class RobotController : MonoBehaviour
             inputY += 0.05f;
         }
 
-        if (Input.GetKey(rightKey))
+        if (Input.GetKey(rightKey) && inputX <= 0.9f)
         {
-            inputX += 1;
+            inputX += 0.05f;
+        }
+        else if (inputX > 0)
+        {
+            inputX -= 0.05f;
         }
 
-        if (Input.GetKey(leftKey))
+        if (Input.GetKey(leftKey) && inputX >= -0.9f)
         {
-            inputX -= 1;
+            inputX -= 0.05f;
+        }
+        else if (inputX < 0)
+        {
+            inputX += 0.05f;
+        }
+        
+        if (inputX < 0.05f && inputX > -0.05f)
+        {
+            inputX = 0;
+        }
+
+        if (inputY < 0.05f && inputY > -0.05f)
+        {
+            inputY = 0;
         }
 
         if (Input.GetKey(sprintKey))
