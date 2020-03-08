@@ -411,7 +411,7 @@ public class RobotController : MonoBehaviour
     void DoFallDamage(float fallSpeed) // fallSpeed will be positive
     {
         // do your fall logic here using fallSpeed to determine how hard we hit the ground
-        Debug.Log("Hit the ground at " + fallSpeed.ToString() + " units per second");
+        //Debug.Log("Hit the ground at " + fallSpeed.ToString() + " units per second");
         if (fallSpeed > 10)
         {
             health -= (fallSpeed - 10) * 2;
