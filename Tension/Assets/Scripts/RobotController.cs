@@ -386,7 +386,7 @@ public class RobotController : MonoBehaviour
 
         if(health <= 0)
         {
-            Instantiate(deadPlayer, transform.position + Vector3.up, transform.rotation);
+            Instantiate(deadPlayer, transform.position + Vector3.up * 3.5f, transform.rotation);
             Destroy(GameObject.FindGameObjectWithTag("Canvas"));
             Destroy(gameObject);
         }

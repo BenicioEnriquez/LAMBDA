@@ -1002,7 +1002,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7027053492651394392}
   m_Layer: 0
-  m_Name: Soldier (1)
+  m_Name: Soldier Dead
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1016,8 +1016,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7027053492651394395}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 244.13, y: 6.1603074, z: 447.89294}
-  m_LocalScale: {x: 2.25, y: 2.25, z: 2.25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 6.75, y: 6.75, z: 6.75}
   m_Children:
   - {fileID: 7027053493714639314}
   - {fileID: 7027053493763910246}

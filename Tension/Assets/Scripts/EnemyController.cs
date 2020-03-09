@@ -10,11 +10,15 @@ public class EnemyController : MonoBehaviour
     [Range(0,100)]
     public float health = 100.0f;
     private NavMeshAgent nav;
+    private Animator anim;
+    private Vector3 lastPosition;
+    private float speed;
 
     // Start is called before the first frame update
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -31,6 +35,13 @@ public class EnemyController : MonoBehaviour
             Instantiate(deadEnemy, transform.position, transform.rotation);
             Destroy(gameObject);
         }
+    }
+
+    void FixedUpdate()
+    {
+        speed = Mathf.Lerp(speed, (transform.position - lastPosition).magnitude / Time.deltaTime, 0.75f);
+        lastPosition = transform.position;
+        anim.SetFloat("Forward", speed);
     }
 
     void OnCollisionEnter(Collision collision)
