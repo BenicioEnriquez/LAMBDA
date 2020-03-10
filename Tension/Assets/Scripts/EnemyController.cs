@@ -39,9 +39,9 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
-        speed = Mathf.Lerp(speed, (transform.position - lastPosition).magnitude / Time.deltaTime, 0.75f);
-        lastPosition = transform.position;
-        anim.SetFloat("Forward", speed);
+        //speed = Mathf.Lerp(speed, (transform.position - lastPosition).magnitude / Time.deltaTime, 0.75f);
+        //lastPosition = transform.position;
+        anim.SetFloat("Forward", 0.5f);
     }
 
     void OnCollisionEnter(Collision collision)

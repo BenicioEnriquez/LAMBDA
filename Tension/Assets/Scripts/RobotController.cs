@@ -119,7 +119,6 @@ public class RobotController : MonoBehaviour
 
         // do our calculations so we don't have to do them every frame
         CapsuleCollider capsule = (CapsuleCollider)coll;
-        Debug.Log(capsule);
         halfPlayerHeight = capsule.height * 0.5f;
         fudgeCheck = halfPlayerHeight + FudgeExtra;
         bottomCapsuleSphereOrigin = halfPlayerHeight - capsule.radius;
@@ -386,7 +385,7 @@ public class RobotController : MonoBehaviour
 
         if(health <= 0)
         {
-            Instantiate(deadPlayer, transform.position + Vector3.up * 3.5f, transform.rotation);
+            Instantiate(deadPlayer, transform.position + Vector3.up * 2.8f, transform.rotation);
             Destroy(GameObject.FindGameObjectWithTag("Canvas"));
             Destroy(gameObject);
         }
